@@ -19,12 +19,12 @@ import ${mip.packageName}.${mip.name};
 public class ${model.name}DTO implements Serializable {
 
 <#list model.fields as field>
-<#if field.showOnUpdate>
+<#if field.showOnDto>
     /**
      * ${field.desc}
      */
     ${field.scope} ${field.type} ${field.name};
-<#/if>
+</#if>
 </#list>
 
 }
