@@ -164,15 +164,21 @@ public class CodeGen {
         List<Model> models =
                 showTables
                         .stream()
-                        .map(tm -> new Model()
-                                .setAuthor("lan")
-                                .setCreateTime(createTime)
-                                .setDesc(tm.get("TABLE_COMMENT"))
-                                .setName(StrUtil.upperFirst(StrUtil.toCamelCase(tm.get("TABLE_NAME"))))
-                                .setTableName(tm.get("TABLE_NAME"))
-                                .setFirstLetterLowerCaseName(StrUtil.lowerFirst(StrUtil.toCamelCase(tm.get("TABLE_NAME"))))
-                                .setUpperCaseName(StrUtil.toCamelCase(tm.get("TABLE_NAME")).toUpperCase())
-                                .setFields(buildField(tm.get("TABLE_NAME"))))
+                        .map(tm -> {
+                                    Model model = new Model()
+                                            .setAuthor(project.getAuthor())
+                                            .setCreateTime(createTime)
+                                            .setDesc(tm.get("TABLE_COMMENT"))
+                                            .setTableName(tm.get("TABLE_NAME"))
+                                            .setFields(buildField(tm.get("TABLE_NAME")));
+                                    String tableName = tm.get("TABLE_NAME");
+                                    tableName = StrUtil.isNotBlank(project.getRemovedPrefix()) ? tableName.replace(project.getRemovedPrefix(), "") : tableName;
+                                    model.setName(StrUtil.upperFirst(StrUtil.toCamelCase(tableName)));
+                                    model.setFirstLetterLowerCaseName(StrUtil.lowerFirst(StrUtil.toCamelCase(tableName)));
+                                    model.setUpperCaseName(StrUtil.toCamelCase(tm.get("TABLE_NAME")).toUpperCase());
+                                    return model;
+                                }
+                        )
                         .collect(Collectors.toList());
 
 

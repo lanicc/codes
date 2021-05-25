@@ -27,6 +27,8 @@ public class Project {
 
     private String removedPrefix;
 
+    private String author;
+
     private List<Model> models;
 
     public String getProjectName() {

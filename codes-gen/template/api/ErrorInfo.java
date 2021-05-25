@@ -13,9 +13,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ${model.name}ErrorInfo implements IErrorInfo {
 
-    ${model.upperCaseName}_NOT_EXIST("5001", "用户不存在"),
-    ${model.upperCaseName}_INSERT_FAILED("5002", "用户新增失败"),
-    ${model.upperCaseName}_UPDATE_FAILED("5003", "用户更新失败");
+    ${model.upperCaseName}_NOT_EXIST("5001", "${model.desc}不存在"),
+    ${model.upperCaseName}_INSERT_FAILED("5002", "${model.desc}新增失败"),
+    ${model.upperCaseName}_UPDATE_FAILED("5003", "${model.desc}更新失败");
 
 
     @Getter
