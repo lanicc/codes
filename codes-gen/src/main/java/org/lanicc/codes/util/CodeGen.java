@@ -175,7 +175,7 @@ public class CodeGen {
                                     tableName = StrUtil.isNotBlank(project.getRemovedPrefix()) ? tableName.replace(project.getRemovedPrefix(), "") : tableName;
                                     model.setName(StrUtil.upperFirst(StrUtil.toCamelCase(tableName)));
                                     model.setFirstLetterLowerCaseName(StrUtil.lowerFirst(StrUtil.toCamelCase(tableName)));
-                                    model.setUpperCaseName(StrUtil.toCamelCase(tm.get("TABLE_NAME")).toUpperCase());
+                                    model.setUpperCaseName(tableName.toUpperCase());
                                     return model;
                                 }
                         )
