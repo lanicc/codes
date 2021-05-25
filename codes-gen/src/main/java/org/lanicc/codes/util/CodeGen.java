@@ -197,6 +197,7 @@ public class CodeGen {
                                     .setJavaType(javaType)
                                     .setName(StrUtil.toCamelCase(fm.get("COLUMN_NAME")))
                                     .setDesc(fm.get("COLUMN_COMMENT"))
+                                    .setShowOnDto(!"deleted".contains(StrUtil.toCamelCase(fm.get("COLUMN_NAME")).toLowerCase()))
                                     .setShowOnAdd(!"dateCreate,dateUpdate,modifier,deleted".toLowerCase().contains(StrUtil.toCamelCase(fm.get("COLUMN_NAME")).toLowerCase()))
                                     .setShowOnUpdate(!"dateCreate,creator,dateUpdate,deleted".toLowerCase().contains(StrUtil.toCamelCase(fm.get("COLUMN_NAME")).toLowerCase()));
                         }

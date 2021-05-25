@@ -30,4 +30,5 @@ public class Field {
 
     private boolean showOnUpdate;
 
+    private boolean showOnDto;
 }
