@@ -1,8 +1,8 @@
 package com.souche.component.${p.name}.service.model;
 
+import com.souche.component.sharing.common.model.BaseModel;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.souche.component.common.model.BaseModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

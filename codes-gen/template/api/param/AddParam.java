@@ -8,7 +8,7 @@ import ${mip.packageName}.${mip.name};
 </#list>
 
 /**
- * ${model.desc}(${model.tableName})表实体类
+ * ${model.desc}新增参数
  *
  * @author ${model.author}
  * @since ${p.version}

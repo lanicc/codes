@@ -19,6 +19,8 @@ public class Model {
 
     private String firstLetterLowerCaseName;
 
+    private String upperCaseName;
+
     private String tableName;
 
     private String author;

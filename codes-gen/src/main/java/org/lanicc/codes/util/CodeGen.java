@@ -93,10 +93,12 @@ public class CodeGen {
             data.put("model", model);
             data.put("modelImports", importsOf(model));
 
+            process(apiSrcBasePath, "enums/" + model.getName() + "ErrorInfo.java", "api/ErrorInfo.java", data);
             process(apiSrcBasePath, model.getName() + "Service.java", "api/service.java", data);
             process(apiSrcBasePath, "model/" + model.getName() + "DTO.java", "api/DTO.java", data);
             process(apiSrcBasePath, "model/param/" + model.getName() + "AddParam.java", "api/param/AddParam.java", data);
             process(apiSrcBasePath, "model/param/" + model.getName() + "UpdateParam.java", "api/param/UpdateParam.java", data);
+            process(apiSrcBasePath, "model/param/" + model.getName() + "DeleteParam.java", "api/param/DeleteParam.java", data);
 
             process(serviceSrcBasePath, "model/" + model.getName() + "DO.java", "service/DO.java", data);
             process(serviceSrcBasePath, "mapper/" + model.getName() + "DTOMapper.java", "service/DTOMapper.java", data);
@@ -169,6 +171,7 @@ public class CodeGen {
                                 .setName(StrUtil.upperFirst(StrUtil.toCamelCase(tm.get("TABLE_NAME"))))
                                 .setTableName(tm.get("TABLE_NAME"))
                                 .setFirstLetterLowerCaseName(StrUtil.lowerFirst(StrUtil.toCamelCase(tm.get("TABLE_NAME"))))
+                                .setUpperCaseName(StrUtil.toCamelCase(tm.get("TABLE_NAME")).toUpperCase())
                                 .setFields(buildField(tm.get("TABLE_NAME"))))
                         .collect(Collectors.toList());
 

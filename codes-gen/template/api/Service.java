@@ -1,9 +1,10 @@
 package com.souche.component.${p.name}.api;
 
-import com.souche.component.common.query.QueryParam;
 import com.souche.component.${p.name}.api.model.${model.name}DTO;
 import com.souche.component.${p.name}.api.model.param.${model.name}AddParam;
 import com.souche.component.${p.name}.api.model.param.${model.name}UpdateParam;
+import com.souche.component.${p.name}.api.model.param.${model.name}DeleteParam;
+import com.souche.component.sharing.common.query.QueryParam;
 
 import java.util.List;
 
@@ -58,8 +59,7 @@ public interface ${model.name}Service {
      * 根据用户主键删除${model.desc}
      * 删除失败会抛出异常报错
      *
-     * @param primaryKey 主键，用户唯一标识
-     * @param modifier 操作人
+     * @param param 待删除的信息
      */
-    void deleteByPrimaryKey(String primaryKey, String modifier);
+    void deleteByPrimaryKey(${model.name}DeleteParam param);
 }
