@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * Created on {model.createTime}.
+ * Created on ${model.createTime}.
  *
  * @author ${model.author}
  * @since ${p.version}
