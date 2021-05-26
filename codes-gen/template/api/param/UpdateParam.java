@@ -1,4 +1,4 @@
-package com.souche.component.${p.name}.api.model.param;
+package com.souche.component.core.${p.name}.api.model.param;
 
 import lombok.Data;
 

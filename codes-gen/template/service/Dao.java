@@ -1,7 +1,7 @@
-package com.souche.component.${p.name}.service.dao;
+package com.souche.component.core.${p.name}.service.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.souche.component.${p.name}.service.model.${model.name}DO;
+import com.souche.component.core.${p.name}.service.model.${model.name}DO;
 
 import java.util.List;
 

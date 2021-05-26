@@ -1,4 +1,4 @@
-package com.souche.component.${p.name}.api.model;
+package com.souche.component.core.${p.name}.api.model;
 
 import lombok.Data;
 import lombok.experimental.FieldNameConstants;

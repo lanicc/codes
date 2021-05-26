@@ -1,4 +1,4 @@
-package com.souche.component.${p.name}.service.model;
+package com.souche.component.core.${p.name}.service.model;
 
 import com.souche.component.sharing.common.model.BaseModel;
 import com.baomidou.mybatisplus.annotation.TableId;

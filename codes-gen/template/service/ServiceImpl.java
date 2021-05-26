@@ -1,16 +1,16 @@
-package com.souche.component.${p.name}.service.impl;
+package com.souche.component.core.${p.name}.service.impl;
 
-import com.souche.component.org.api.enums.${model.name}ErrorInfo;
+import com.souche.component.core.${p.name}.api.enums.${model.name}ErrorInfo;
 import com.souche.component.sharing.common.api.IErrorInfo;
 import com.souche.component.sharing.common.service.BaseService;
-import com.souche.component.${p.name}.api.${model.name}Service;
-import com.souche.component.${p.name}.api.model.${model.name}DTO;
-import com.souche.component.${p.name}.api.model.param.${model.name}AddParam;
-import com.souche.component.${p.name}.api.model.param.${model.name}UpdateParam;
-import com.souche.component.${p.name}.api.model.param.${model.name}DeleteParam;
-import com.souche.component.${p.name}.service.dao.${model.name}Dao;
-import com.souche.component.${p.name}.service.mapper.${model.name}DTOMapper;
-import com.souche.component.${p.name}.service.model.${model.name}DO;
+import com.souche.component.core.${p.name}.api.${model.name}Service;
+import com.souche.component.core.${p.name}.api.model.${model.name}DTO;
+import com.souche.component.core.${p.name}.api.model.param.${model.name}AddParam;
+import com.souche.component.core.${p.name}.api.model.param.${model.name}UpdateParam;
+import com.souche.component.core.${p.name}.api.model.param.${model.name}DeleteParam;
+import com.souche.component.core.${p.name}.service.dao.${model.name}Dao;
+import com.souche.component.core.${p.name}.service.mapper.${model.name}DTOMapper;
+import com.souche.component.core.${p.name}.service.model.${model.name}DO;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

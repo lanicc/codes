@@ -1,4 +1,4 @@
-package com.souche.component.${p.name}.api.enums;
+package com.souche.component.core.${p.name}.api.enums;
 
 import com.souche.component.sharing.common.api.IErrorInfo;
 import lombok.AllArgsConstructor;
