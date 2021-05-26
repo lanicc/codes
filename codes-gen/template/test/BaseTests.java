@@ -1,4 +1,4 @@
-package com.souche.component.${p.name}.service;
+package com.souche.component.core.${p.name}.service;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

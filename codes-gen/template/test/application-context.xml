@@ -32,7 +32,7 @@
 
   <!-- MyBatis Mapper Scan Config  -->
   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-    <property name="basePackage" value="com.souche.component.${p.name}.service.dao"/>
+    <property name="basePackage" value="com.souche.component.core.${p.name}.service.dao"/>
   </bean>
 
 </beans>

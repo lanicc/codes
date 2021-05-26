@@ -82,7 +82,7 @@ public class CodeGen {
         String srcBasePath = "/src/main/java/com/souche/component/core/" + project.getName() + "/";
         String apiSrcBasePath = basePath + "/" + project.getProjectName() + "/" + project.getApiModuleName() + srcBasePath + "/api";
         String serviceSrcBasePath = basePath + "/" + project.getProjectName() + "/" + project.getServiceModuleName() + srcBasePath + "/service";
-        String testSrcBasePath = basePath + "/" + project.getProjectName() + "/" + project.getServiceModuleName() + "/src/test/java/com/souche/component/" + project.getName() + "/service";
+        String testSrcBasePath = basePath + "/" + project.getProjectName() + "/" + project.getServiceModuleName() + "/src/test/java/com/souche/component/core/" + project.getName() + "/service";
         String testResourceBasePath = basePath + "/" + project.getProjectName() + "/" + project.getServiceModuleName() + "/src/test/resources";
 
         Map<String, Object> data = new HashMap<>();
