@@ -1,7 +1,7 @@
 package com.souche.component.core.${p.name}.service.mapper;
 
 import com.souche.component.sharing.common.mapper.BaseDTOMapper;
-import com.souche.component.core.core.${p.name}.api.model.${model.name}DTO;
+import com.souche.component.core.${p.name}.api.model.${model.name}DTO;
 import com.souche.component.core.${p.name}.api.model.param.${model.name}AddParam;
 import com.souche.component.core.${p.name}.api.model.param.${model.name}UpdateParam;
 import com.souche.component.core.${p.name}.api.model.param.${model.name}DeleteParam;

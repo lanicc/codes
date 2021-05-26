@@ -79,7 +79,7 @@ public class CodeGen {
 
 
     private void src() throws TemplateException, IOException {
-        String srcBasePath = "/src/main/java/com/souche/component/" + project.getName() + "/";
+        String srcBasePath = "/src/main/java/com/souche/component/core/" + project.getName() + "/";
         String apiSrcBasePath = basePath + "/" + project.getProjectName() + "/" + project.getApiModuleName() + srcBasePath + "/api";
         String serviceSrcBasePath = basePath + "/" + project.getProjectName() + "/" + project.getServiceModuleName() + srcBasePath + "/service";
         String testSrcBasePath = basePath + "/" + project.getProjectName() + "/" + project.getServiceModuleName() + "/src/test/java/com/souche/component/" + project.getName() + "/service";

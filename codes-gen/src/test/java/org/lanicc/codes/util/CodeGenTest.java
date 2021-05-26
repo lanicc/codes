@@ -28,7 +28,7 @@ public class CodeGenTest {
                 outputPath,
                 new Project()
                         .setAuthor("lan")   //作者
-                        .setName("user") //名称，工程名=component-core-name, api-module=component-name-api, service-module=component-name-service, 包名com.souche.component.${project.name}
+                        .setName("org") //名称，工程名=component-core-name, api-module=component-name-api, service-module=component-name-service, 包名com.souche.component.${project.name}
                         .setDesc("用户组件")
                         .setVersion("2.0.0-SNAPSHOT")
                         .setRemovedPrefix("")   // 删除表前缀
