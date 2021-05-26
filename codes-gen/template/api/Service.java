@@ -1,5 +1,6 @@
 package com.souche.component.core.${p.name}.api;
 
+import com.souche.component.sharing.common.utils.PageResult;
 import com.souche.component.core.${p.name}.api.model.${model.name}DTO;
 import com.souche.component.core.${p.name}.api.model.param.${model.name}AddParam;
 import com.souche.component.core.${p.name}.api.model.param.${model.name}UpdateParam;
@@ -28,7 +29,7 @@ public interface ${model.name}Service {
     ${model.name}DTO add(${model.name}AddParam addDTO);
 
     /**
-     * 根据主键修改${model.desc}
+     * 根据主键修改${model.desc}, 忽略null值更新
      *
      * @param updateDTO 待修改${model.desc}信息
      * @return 数据库${model.desc}记录
@@ -36,6 +37,16 @@ public interface ${model.name}Service {
      * @see ${model.name}DTO
      */
     ${model.name}DTO updateByPrimaryKey(${model.name}UpdateParam updateDTO);
+
+    /**
+     * 根据主键修改${model.desc}, 不忽略null值更新
+     *
+     * @param updateDTO 待修改${model.desc}信息
+     * @return 数据库${model.desc}记录
+     * @see ${model.name}UpdateParam
+     * @see ${model.name}DTO
+     */
+    ${model.name}DTO updateForceByPrimaryKey(${model.name}UpdateParam updateDTO);
 
     /**
      * 根据条件查询单个${model.desc}
@@ -54,6 +65,18 @@ public interface ${model.name}Service {
      * @see QueryParam
      */
     List<${model.name}DTO> findList(QueryParam param);
+
+    /**
+     * 分页查询${model.desc}
+     *
+     * @param index 起始页
+     * @param size  每页大小
+     * @param param 查询条件
+     * @return 数据库${model.desc}记录
+     * @see QueryParam
+     * @see PageResult
+     */
+    PageResult<${model.name}DTO> findListByPage(int index, int size, QueryParam param);
 
     /**
      * 根据用户主键删除${model.desc}

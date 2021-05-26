@@ -42,6 +42,10 @@ public class CodeGen {
     public CodeGen(String outBasePath, Project project) throws IOException {
         this.basePath = outBasePath;
         this.project = project;
+        if (StrUtil.isBlank(this.project.getFirstLetterUpperCaseName())) {
+            this.project.setFirstLetterUpperCaseName(StrUtil.upperFirst(project.getName()));
+        }
+
         this.dbMapper = new DbMapperImpl(project.getDb());
         this.database = project.getDb().getDatabase();
 
@@ -93,7 +97,7 @@ public class CodeGen {
             data.put("model", model);
             data.put("modelImports", importsOf(model));
 
-            process(apiSrcBasePath, "enums/" + model.getName() + "ErrorInfo.java", "api/ErrorInfo.java", data);
+//            process(apiSrcBasePath, "enums/" + model.getName() + "ErrorInfo.java", "api/ErrorInfo.java", data);
             process(apiSrcBasePath, model.getName() + "Service.java", "api/service.java", data);
             process(apiSrcBasePath, "model/" + model.getName() + "DTO.java", "api/DTO.java", data);
             process(apiSrcBasePath, "model/param/" + model.getName() + "AddParam.java", "api/param/AddParam.java", data);

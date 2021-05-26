@@ -29,6 +29,7 @@ public class CodeGenTest {
                 new Project()
                         .setAuthor("lan")   //作者
                         .setName("organization") //名称，工程名=component-core-name, api-module=component-name-api, service-module=component-name-service, 包名com.souche.component.${project.name}
+                        .setFirstLetterUpperCaseName("Org")     //默认会根据project.name生成
                         .setDesc("组织组件")
                         .setVersion("2.0.0-SNAPSHOT")
                         .setRemovedPrefix("")   // 删除表前缀

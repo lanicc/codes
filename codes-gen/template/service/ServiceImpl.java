@@ -1,7 +1,7 @@
 package com.souche.component.core.${p.name}.service.impl;
 
-import com.souche.component.core.${p.name}.api.enums.${model.name}ErrorInfo;
 import com.souche.component.sharing.common.api.IErrorInfo;
+import com.souche.component.sharing.common.enums.${p.firstLetterUpperCaseName}ErrorInfo;
 import com.souche.component.sharing.common.service.BaseService;
 import com.souche.component.core.${p.name}.api.${model.name}Service;
 import com.souche.component.core.${p.name}.api.model.${model.name}DTO;
@@ -25,11 +25,11 @@ public class ${model.name}ServiceImpl extends BaseService<${model.name}DO, ${mod
     private final ${model.name}DTOMapper dtoMapper = ${model.name}DTOMapper.INSTANCE;
 
     @Getter
-    private final IErrorInfo objectNotExistError = ${model.name}ErrorInfo.${model.upperCaseName}_NOT_EXIST;
+    private final IErrorInfo objectNotExistError = ${p.firstLetterUpperCaseName}ErrorInfo.${model.upperCaseName}_NOT_EXIST;
     @Getter
-    private final IErrorInfo insertOperateFailedError = ${model.name}ErrorInfo.${model.upperCaseName}_INSERT_FAILED;
+    private final IErrorInfo insertOperateFailedError = ${p.firstLetterUpperCaseName}ErrorInfo.${model.upperCaseName}_INSERT_FAILED;
     @Getter
-    private final IErrorInfo updateOperateFailedError = ${model.name}ErrorInfo.${model.upperCaseName}_UPDATE_FAILED;
+    private final IErrorInfo updateOperateFailedError = ${p.firstLetterUpperCaseName}ErrorInfo.${model.upperCaseName}_UPDATE_FAILED;
 
     @Getter
     @Autowired
