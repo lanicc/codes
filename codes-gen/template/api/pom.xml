@@ -92,6 +92,19 @@
           </execution>
         </executions>
       </plugin>
+      <!--      编译时包含方法的参数名   -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${"$"}{maven.compiler.source}</source>
+          <target>${"$"}{maven.compiler.target}</target>
+          <encoding>UTF8</encoding>
+          <compilerArgs>
+            <arg>-parameters</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <distributionManagement>
