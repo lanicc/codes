@@ -51,7 +51,7 @@ public class CodeGen {
         this.dbMapper = new DbMapperImpl(project.getDb());
         this.database = project.getDb().getDatabase();
 
-        String templatePath = Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("")).getPath() + "../template";
+        String templatePath = Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("")).getPath() + "../classes/template";
 
         this.cfg = new Configuration(Configuration.VERSION_2_3_22);
         cfg.setDirectoryForTemplateLoading(new File(templatePath));
