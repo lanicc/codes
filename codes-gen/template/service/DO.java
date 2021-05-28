@@ -21,6 +21,7 @@ import ${mip.packageName}.${mip.name};
 @EqualsAndHashCode(callSuper = true)
 public class ${model.name}DO extends BaseModel {
 <#list model.fields as field>
+
     /**
      * ${field.desc}
      */

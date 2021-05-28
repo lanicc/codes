@@ -17,9 +17,9 @@ import ${mip.packageName}.${mip.name};
 @Data
 @FieldNameConstants
 public class ${model.name}DTO implements Serializable {
-
-<#list model.fields as field>
+    <#list model.fields as field>
 <#if field.showOnDto>
+
     /**
      * ${field.desc}
      */

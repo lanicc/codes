@@ -18,7 +18,9 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created on 2021/5/21.
@@ -95,16 +97,16 @@ public class CodeGen {
         List<Model> models = project.getModels();
         for (Model model : models) {
             data.put("model", model);
-            data.put("modelImports", importsOf(model));
+            importsOf(data, model, null);
 
 //            process(apiSrcBasePath, "enums/" + model.getName() + "ErrorInfo.java", "api/ErrorInfo.java", data);
             process(apiSrcBasePath, model.getName() + "Service.java", "api/service.java", data);
-            process(apiSrcBasePath, "model/" + model.getName() + "DTO.java", "api/DTO.java", data);
-            process(apiSrcBasePath, "model/param/" + model.getName() + "AddParam.java", "api/param/AddParam.java", data);
-            process(apiSrcBasePath, "model/param/" + model.getName() + "UpdateParam.java", "api/param/UpdateParam.java", data);
-            process(apiSrcBasePath, "model/param/" + model.getName() + "DeleteParam.java", "api/param/DeleteParam.java", data);
+            process(apiSrcBasePath, "model/" + model.getName() + "DTO.java", "api/DTO.java", importsOf(data, model, Field::isShowOnDto));
+            process(apiSrcBasePath, "model/param/" + model.getName() + "AddParam.java", "api/param/AddParam.java", importsOf(data, model, Field::isShowOnAdd));
+            process(apiSrcBasePath, "model/param/" + model.getName() + "UpdateParam.java", "api/param/UpdateParam.java", importsOf(data, model, Field::isShowOnUpdate));
+            process(apiSrcBasePath, "model/param/" + model.getName() + "DeleteParam.java", "api/param/DeleteParam.java", importsOf(data, model, Field::isPrimary));
 
-            process(serviceSrcBasePath, "model/" + model.getName() + "DO.java", "service/DO.java", data);
+            process(serviceSrcBasePath, "model/" + model.getName() + "DO.java", "service/DO.java", importsOf(data, model, null));
             process(serviceSrcBasePath, "mapper/" + model.getName() + "DTOMapper.java", "service/DTOMapper.java", data);
             process(serviceSrcBasePath, "dao/" + model.getName() + "Dao.java", "service/Dao.java", data);
             process(serviceSrcBasePath, "impl/" + model.getName() + "ServiceImpl.java", "service/ServiceImpl.java", data);
@@ -117,8 +119,18 @@ public class CodeGen {
         process(testResourceBasePath, "db-config.properties", "test/db-config.properties", data);
     }
 
-    private List<JavaType> importsOf(Model model) {
-        return model.getFields().stream()
+    private Map<String, Object> importsOf(Map<String, Object> data, Model model, Predicate<Field> predicate) {
+        data.put("modelImports", importsOf(model, predicate));
+        return data;
+    }
+
+    private List<JavaType> importsOf(Model model, Predicate<Field> predicate) {
+        Stream<Field> stream = model.getFields().stream();
+
+        if (predicate != null) {
+            stream = stream.filter(predicate);
+        }
+        return stream
                 .map(Field::getJavaType)
                 .filter(JavaType::isNeedImport)
                 .distinct()
@@ -194,16 +206,22 @@ public class CodeGen {
         return describeList.stream()
                 .map(fm -> {
                             JavaType javaType = typeMatchToJava(fm.get("DATA_TYPE"));
+                            boolean primary = primary(fm.get("COLUMN_KEY"));
+                            String column_name = StrUtil.toCamelCase(fm.get("COLUMN_NAME"));
+                            String fieldType = javaType.getDeclareName();
+                            if (column_name.equalsIgnoreCase("isTest")) {
+                                fieldType = "Boolean";
+                            }
                             return new Field()
-                                    .setPrimary(primary(fm.get("COLUMN_KEY")))
+                                    .setPrimary(primary)
                                     .setScope("private")
-                                    .setType(javaType.getName())
+                                    .setType(fieldType)
                                     .setJavaType(javaType)
-                                    .setName(StrUtil.toCamelCase(fm.get("COLUMN_NAME")))
+                                    .setName(column_name)
                                     .setDesc(fm.get("COLUMN_COMMENT"))
-                                    .setShowOnDto(!"dateDelete".contains(StrUtil.toCamelCase(fm.get("COLUMN_NAME")).toLowerCase()))
-                                    .setShowOnAdd(!"dateCreate,dateUpdate,modifier,dateDelete".toLowerCase().contains(StrUtil.toCamelCase(fm.get("COLUMN_NAME")).toLowerCase()))
-                                    .setShowOnUpdate(!"dateCreate,creator,dateUpdate,dateDelete".toLowerCase().contains(StrUtil.toCamelCase(fm.get("COLUMN_NAME")).toLowerCase()));
+                                    .setShowOnDto(!"dateDelete".contains(column_name.toLowerCase()))
+                                    .setShowOnAdd(!"dateCreate,dateUpdate,modifier,dateDelete".toLowerCase().contains(column_name.toLowerCase()) && !primary)
+                                    .setShowOnUpdate(!"dateCreate,creator,dateUpdate,dateDelete".toLowerCase().contains(column_name.toLowerCase()));
                         }
                 )
                 .collect(Collectors.toList());

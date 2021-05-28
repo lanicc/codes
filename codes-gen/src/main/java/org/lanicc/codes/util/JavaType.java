@@ -17,9 +17,18 @@ public class JavaType {
 
     private String name;
 
+    private String declareName;
+
     private String packageName;
 
     private boolean needImport;
+
+    public JavaType(String name, String declareName, String packageName, boolean needImport) {
+        this.name = name;
+        this.declareName = declareName;
+        this.packageName = packageName;
+        this.needImport = needImport;
+    }
 
     public JavaType(String name, String packageName, boolean needImport) {
         this.name = name;
@@ -29,6 +38,7 @@ public class JavaType {
 
     public JavaType(String name, boolean needImport) {
         this.name = name;
+        this.declareName = name;
         this.needImport = needImport;
     }
 

@@ -16,7 +16,7 @@ public class JdbcTypes {
 
     static {
         register("varchar", String.class, false);
-        register("json", String.class, false);
+        register("json", "Map<String, String>", Map.class, true);
         register("int", Integer.class, false);
         register("bigint", Long.class, false);
         register("datetime", LocalDateTime.class, true);
@@ -28,6 +28,10 @@ public class JdbcTypes {
     }
 
     private static void register(String dbType, Class<?> clazz, boolean needImport) {
-        javaTypeMap.put(dbType, new JavaType(clazz.getSimpleName(), clazz.getPackage().getName(), needImport));
+        register(dbType, clazz.getSimpleName(), clazz, needImport);
+    }
+
+    private static void register(String dbType, String declareName, Class<?> clazz, boolean needImport) {
+        javaTypeMap.put(dbType, new JavaType(clazz.getSimpleName(), declareName, clazz.getPackage().getName(), needImport));
     }
 }

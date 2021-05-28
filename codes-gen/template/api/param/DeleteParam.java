@@ -17,6 +17,7 @@ import ${mip.packageName}.${mip.name};
 public class ${model.name}DeleteParam implements Serializable {
 <#list model.fields as field>
 <#if field.primary>
+
     /**
      * ${field.desc}
      */

@@ -28,12 +28,12 @@ public class CodeGenTest {
                 outputPath,
                 new Project()
                         .setAuthor("lan")   //作者
-                        .setName("organization") //名称，工程名=component-core-name, api-module=component-name-api, service-module=component-name-service, 包名com.souche.component.${project.name}
-                        .setFirstLetterUpperCaseName("Org")     //默认会根据project.name生成
-                        .setDesc("组织组件")
+                        .setName("user") //名称，工程名=component-core-name, api-module=component-name-api, service-module=component-name-service, 包名com.souche.component.${project.name}
+                        .setFirstLetterUpperCaseName("User")     //默认会根据project.name生成
+                        .setDesc("用户组件")
                         .setVersion("2.0.0-SNAPSHOT")
                         .setRemovedPrefix("")   // 删除表前缀
-                        .setTables(Arrays.asList("org", "org_node", "org_node_info"))    //需要生成代码的表
+                        .setTables(Arrays.asList("user", "user_credential", "user_address", "user_bankcard", "user_contact", "user_login"))    //需要生成代码的表
                         .setDb(
                                 new Db()
                                         .setUrl("jdbc:mysql://localhost:3307/components")   //jdbc_url

@@ -17,6 +17,7 @@ import ${mip.packageName}.${mip.name};
 public class ${model.name}UpdateParam implements Serializable {
 <#list model.fields as field>
 <#if field.showOnUpdate>
+
     /**
      * ${field.desc}
      */
