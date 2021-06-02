@@ -76,7 +76,7 @@ public interface ${model.name}Service {
      * @see QueryParam
      * @see PageResult
      */
-    PageResult<${model.name}DTO> findListByPage(int index, int size, QueryParam param);
+    PageResult<${model.name}DTO> findListByPage(Integer index, Integer size, QueryParam param);
 
     /**
      * 根据用户主键删除${model.desc}
