@@ -99,7 +99,7 @@ public class CodeGen {
             data.put("model", model);
             importsOf(data, model, null);
 
-//            process(apiSrcBasePath, "enums/" + model.getName() + "ErrorInfo.java", "api/ErrorInfo.java", data);
+            process(apiSrcBasePath, "enums/" + model.getName() + "ErrorInfo.java", "api/ErrorInfo.java", data);
             process(apiSrcBasePath, model.getName() + "Service.java", "api/service.java", data);
             process(apiSrcBasePath, "model/" + model.getName() + "DTO.java", "api/DTO.java", importsOf(data, model, Field::isShowOnDto));
             process(apiSrcBasePath, "model/param/" + model.getName() + "AddParam.java", "api/param/AddParam.java", importsOf(data, model, Field::isShowOnAdd));
